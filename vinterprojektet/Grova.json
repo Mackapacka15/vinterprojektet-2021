@@ -1,0 +1,12 @@
+[
+    {
+        "question" : "Varför är brandbilen röd?",
+        "answer" : "Den blir generad när den visar slangen",
+        "grovLvl" : 1
+    },
+    {
+        "question" : "Vad hände med han som snodde an jas?",
+        "answer" : "Han blev Gripen",
+        "grovLvl" : 1
+    }
+]
