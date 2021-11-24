@@ -1,12 +1,67 @@
 [
     {
-        "question" : "Varför är brandbilen röd?",
-        "answer" : "Den blir generad när den visar slangen",
+        "question" : "Jag gillar att smörja in min penis framför stora folksamlingar.",
+        "answer" : "Det är välldigt förhud-mjukande",
+        "grovLvl" : 7
+    },
+    {
+        "question" : "Hur avslutades telefonsex?",
+        "answer" : "Med knappsatsen",
+        "grovLvl" : 8
+    },
+    {
+        "question" : "I vilket land har man sämst sex?",
+        "answer" : "I Filipinerna, för där ligger Manilla",
+        "grovLvl" : 6
+    },
+    {
+        "question" : "Vilken partitillhörighet har de som är bäst på oralsex?",
+        "answer" : "Socialdemokrater - de är ju sådana där S-väljare",
+        "grovLvl" : 10
+    },
+    {
+        "question" : "Vad kallar BDSM-fanatiker sina bästa vänner?",
+        "answer" : "Bundisar",
+        "grovLvl" : 4
+    },
+    {
+        "question" : "Vet du varför golfspelare gillar att gå på swingersklubb?",
+        "answer" : "De tycker om att hamna under par",
+        "grovLvl" : 6
+    },
+    {
+        "question" : "Vad säger den ryska glädjeflickan när det är dags att ligga?",
+        "answer" : "Okej, Put-in",
+        "grovLvl" : 7
+    },
+    {
+        "question" : "Varför har kvinnor med push.up-BH så nära till gråt?",
+        "answer" : "De har ögonen för nära lökarna",
         "grovLvl" : 1
     },
     {
-        "question" : "Vad hände med han som snodde an jas?",
-        "answer" : "Han blev Gripen",
+        "question" : "Varför gömde sig den tyska porrstjärnan bakom vindskyddet?",
+        "answer" : "Det var lä-där",
+        "grovLvl" : 3
+    },
+    {
+        "question" : "Vilket är det bästa verktyget för när man ska måla pungen?",
+        "answer" : "Köns-roller",
+        "grovLvl" : 3
+    },
+    {
+        "question" : "Vad hette pojken som fick ärva en marijuanafarm av sin far?",
+        "answer" : "Arv-weed (Arvid)",
+        "grovLvl" : 1
+    },
+    {
+        "question" : "Varför har psykiskt sjuka så höga bensinräkningar?",
+        "answer" : "Tvångstankar",
+        "grovLvl" : 1
+    },
+    {
+        "question" : "Hur skickar porrstjärnor sina anställninsavtal?",
+        "answer" : "Via fax (Fucks)",
         "grovLvl" : 1
     }
 ]

@@ -4,6 +4,6 @@ namespace vinterprojektet
 {
     public class GrovaKort : Kort
     {
-        int grovLvl;
+        int grovLvl { get; init; }
     }
 }

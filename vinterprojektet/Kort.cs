@@ -15,19 +15,18 @@ namespace vinterprojektet
             playeranswer = Console.ReadLine();
             if (playeranswer.ToLower() == answer.ToLower())
             {
-                Console.WriteLine("Haha, Congrats you knew it");
+                Console.WriteLine("Haha, Du kunde svaret");
             }
             else
             {
                 Console.WriteLine(answer);
             }
-            Console.WriteLine("How good was the joke? (0-10)");
+            Console.WriteLine("Hur bra va skämtet? (0-10)");
             score = Console.ReadLine();
             if (score == null)
             {
                 score = "0";
             }
-
         }
     }
 }

@@ -5,7 +5,7 @@ namespace vinterprojektet
     public class Menu
     {
         private string svar = "";
-        private int svarInt = -1;
+        public int playerCount = -1;
         public void Welcome()
         {
             Console.WriteLine("Välkommen till Den som skrattar förlorar spelet");
@@ -13,23 +13,22 @@ namespace vinterprojektet
             Console.WriteLine("Alla spelare börjar med 5 liv");
             Console.WriteLine("Man förlorar ett liv varje gång man skrattar");
         }
-        public int Players()
+        public void Players()
         {
-            while (svarInt == -1)
+            while (playerCount == -1)
             {
                 Console.WriteLine("Hur många spelare ska vara med?");
                 svar = Console.ReadLine();
-                svarInt = IntMaker(svar);
-                if (svarInt <= 1)
+                playerCount = IntMaker(svar);
+                if (playerCount <= 1)
                 {
                     Console.WriteLine("Spelar du själv?");
                     if (svar.ToLower() == "ja")
                     {
-                        svarInt = 1;
+                        playerCount = 1;
                     }
                 }
             }
-            return svarInt;
         }
         private int IntMaker(string input)
         {
