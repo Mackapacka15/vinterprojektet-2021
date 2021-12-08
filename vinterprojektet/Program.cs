@@ -7,38 +7,28 @@ namespace vinterprojektet
         static void Main(string[] args)
         {
             bool playing = true;
+            bool winner = false;
             Menu m = new Menu();
-            Kortlek.SetKortlek();
+            Kortlek k = new Kortlek();
+            k.SetKortlek();
             while (playing)
             {
-                MakePlayers(m.playerCount);
-                while (Player.players.Count() != 1)
+                if (!winner)
                 {
-                    Kortlek.PlayCard();
-                    Player.LaughCheck();
-
+                    k.PlayCard();
+                    winner = Player.LaughCheck();
                 }
-
+                else
+                {
+                    Console.WriteLine($"The winner is {Player.playersList[0].Name}");
+                }
             }
 
 
             Console.ReadLine();
 
         }
-        static void MakePlayers(int playerCount)
-        {
-            if (Player.players.Count() != 0)
-            {
-                for (int i = 0; i < playerCount; i++)
-                {
-                    new Player();
-                }
-            }
-        }
-        public static void EndGame()
-        {
-            
-        }
+
     }
 
 }

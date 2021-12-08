@@ -4,18 +4,18 @@ namespace vinterprojektet
 {
     public class Player
     {
-        public static List<Player> players = new List<Player>();
+        public static List<Player> playersList = new List<Player>();
         static int playerNr = 1;
         int lives = 5;
-        string name;
+        public string Name { get; init; }
         string svar;
 
         public Player()
         {
             Console.WriteLine($"Vad heter spelare {playerNr}?");
-            name = Console.ReadLine();
+            Name = Console.ReadLine();
             playerNr++;
-            players.Add(this);
+            playersList.Add(this);
         }
         public void LooseLife()
         {
@@ -23,7 +23,7 @@ namespace vinterprojektet
         }
         public void didLaugh()
         {
-            Console.WriteLine($"Skrattade {name}?");
+            Console.WriteLine($"Skrattade {Name}?");
             svar = Console.ReadLine();
             if (svar.ToLower() == "ja")
             {
@@ -34,17 +34,30 @@ namespace vinterprojektet
         {
             if (lives <= 0)
             {
+                Console.WriteLine($"{Name} har sktattat för mycket och är ute ur spelet");
                 return false;
             }
             return true;
         }
-        public static void LaughCheck()
+        public static bool LaughCheck()
         {
-            foreach (var p in players)
+            foreach (var p in playersList)
             {
                 p.didLaugh();
             }
-            players.RemoveAll(a => a.IsAive());
+            playersList.RemoveAll(a => !a.IsAive());
+            if (playerNr != 1)
+            {
+                if (playersList.Count == 1)
+                {
+                    return true;
+                }
+            }
+            if (playersList.Count == 0)
+            {
+                Console.WriteLine("Bra spelat hoppas du hade kul");
+            }
+            return false;
         }
     }
 }

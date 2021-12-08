@@ -6,6 +6,11 @@ namespace vinterprojektet
     {
         private string svar = "";
         public int playerCount = -1;
+        public Menu()
+        {
+            Welcome();
+            Players();
+        }
         public void Welcome()
         {
             Console.WriteLine("Välkommen till Den som skrattar förlorar spelet");
@@ -20,16 +25,26 @@ namespace vinterprojektet
                 Console.WriteLine("Hur många spelare ska vara med?");
                 svar = Console.ReadLine();
                 playerCount = IntMaker(svar);
-                if (playerCount <= 1)
+                if (playerCount == 1)
                 {
                     Console.WriteLine("Spelar du själv?");
+                    svar = Console.ReadLine();
                     if (svar.ToLower() == "ja")
                     {
                         playerCount = 1;
                     }
                 }
             }
+            MakePlayers();
         }
+        public void MakePlayers()
+        {
+            for (int i = 0; i < playerCount; i++)
+            {
+                new Player();
+            }
+        }
+
         private int IntMaker(string input)
         {
             bool correct;

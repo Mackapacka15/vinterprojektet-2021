@@ -3,69 +3,89 @@ using System.Text.Json;
 
 namespace vinterprojektet
 {
-    public static class Kortlek
+    public class Kortlek
     {
-        public static List<Kort> mildaKort = new List<Kort>();
-        public static List<GrovaKort> grovaKort = new List<GrovaKort>();
-        public static List<Kort> semiGrovaKort = new List<Kort>();
-        static private int visatKort;
+        private List<Kort> mildaKort = new List<Kort>();
+        private List<GrovaKort> grovaKort = new List<GrovaKort>();
+        private List<Kort> semiGrovaKort = new List<Kort>();
+
+        private Queue<Kort> kortsamling = new Queue<Kort>();
         static Random generator = new Random();
 
-        static public void SetKortlek()
+        public void SetKortlek()
         {
+            List<Kort> kort = new List<Kort>();
             string mildaString = File.ReadAllText("Milda.json");
             mildaKort = JsonSerializer.Deserialize<List<Kort>>(mildaString);
             string grovaString = File.ReadAllText("Grova.json");
             grovaKort = JsonSerializer.Deserialize<List<GrovaKort>>(grovaString);
             string semiGrovaString = File.ReadAllText("SemiGrova.json");
             semiGrovaKort = JsonSerializer.Deserialize<List<Kort>>(semiGrovaString);
-        }
-        static public void PlayCard()
-        {
-            string svar;
-            Console.WriteLine("Vilken kortlek ska användas?");
-            Console.WriteLine("Milda kort = 1");
-            Console.WriteLine("Semi Grova kort = 2");
-            Console.WriteLine("Grova kort = 3");
-            svar = Console.ReadLine();
 
-            if (svar == "1")
+            Console.WriteLine("Vilka kortlekar vill du använda? (Svara med siffran)");
+            Console.WriteLine("1) Milda");
+            Console.WriteLine("2) Milda + Semi Grova");
+            Console.WriteLine("3) Alla");
+            string svar = Console.ReadLine();
+
+            switch (svar)
             {
-                Card(mildaKort.ToArray());
-                mildaKort.RemoveAt(visatKort);
+                case "1":
+                    kort.AddRange(mildaKort);
+                    break;
+                case "2":
+                    kort.AddRange(mildaKort);
+                    kort.AddRange(semiGrovaKort);
+                    break;
+                case "3":
+                    kort.AddRange(mildaKort);
+                    kort.AddRange(semiGrovaKort);
+                    Console.WriteLine("Hur grova ska de grova skämten vara? (1-10)");
+                    string svar2 = Console.ReadLine();
+                    int svarint = IntMaker(svar2);
+                    foreach (var item in grovaKort)
+                    {
+                        if (item.grovLvl <= svarint)
+                        {
+                            kort.Add(item);
+                        }
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Det där var inte en giltig siffra. Du får milda kort");
+                    kort.AddRange(mildaKort);
+                    break;
             }
-            if (svar == "2")
+            RandomizeList(kort);
+        }
+
+        private void RandomizeList(List<Kort> k)
+        {
+            while (k.Count != 0)
             {
-                Card(semiGrovaKort.ToArray());
-                semiGrovaKort.RemoveAt(visatKort);
-            }
-            if (svar == "3")
-            {
-                Card(grovaKort.ToArray());
-                grovaKort.RemoveAt(visatKort);
+                Kort tillagt = k[generator.Next(0, k.Count)];
+                kortsamling.Enqueue(tillagt);
+                k.Remove(tillagt);
             }
         }
-        static void Card(Kort[] kortLista)
+        public void PlayCard()
         {
-            visatKort = generator.Next(0, kortLista.Length);
-            if (kortLista.Length != 0)
+            kortsamling.Dequeue().PrintJoke();
+        }
+        public int IntMaker(string input)
+        {
+            bool correct;
+            int output;
+            correct = int.TryParse(input, out output);
+            if (correct)
             {
-                visatKort = generator.Next(0, kortLista.Length);
-                kortLista[visatKort].PrintJoke();
-            }
-            else
-            {
-                Console.WriteLine("Det var tyvärr slut på kort i den leken. Du får ett milt kort istället");
-                if (mildaKort.Count != 0)
+                if (output <= 10)
                 {
-                    mildaKort[1].PrintJoke();
-                    mildaKort.RemoveAt(1);
-                }
-                else
-                {
-
+                    return output;
                 }
             }
+            Console.WriteLine("That Was Not A valid Number. Du får inga grova skämt");
+            return 0;
         }
     }
 }

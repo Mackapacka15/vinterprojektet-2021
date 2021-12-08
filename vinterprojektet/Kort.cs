@@ -6,7 +6,6 @@ namespace vinterprojektet
     {
         public string question { get; init; }
         public string answer { get; init; }
-        string score;
         string playeranswer;
 
         public void PrintJoke()
@@ -20,12 +19,6 @@ namespace vinterprojektet
             else
             {
                 Console.WriteLine(answer);
-            }
-            Console.WriteLine("Hur bra va skämtet? (0-10)");
-            score = Console.ReadLine();
-            if (score == null)
-            {
-                score = "0";
             }
         }
     }
