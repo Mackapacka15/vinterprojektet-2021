@@ -6,7 +6,7 @@ namespace vinterprojektet
     {
         public static List<Player> playersList = new List<Player>();
         static int playerNr = 1;
-        int lives = 5;
+        int lives = 2;
         public string Name { get; init; }
         string svar;
 
@@ -21,7 +21,7 @@ namespace vinterprojektet
         {
             lives--;
         }
-        public void didLaugh()
+        public void DidLaugh()
         {
             Console.WriteLine($"Skrattade {Name}?");
             svar = Console.ReadLine();
@@ -30,7 +30,7 @@ namespace vinterprojektet
                 lives--;
             }
         }
-        public bool IsAive()
+        public bool IsAlive()
         {
             if (lives <= 0)
             {
@@ -39,25 +39,40 @@ namespace vinterprojektet
             }
             return true;
         }
-        public static bool LaughCheck()
+        public static bool LaughCheck(int playerCount)
+        {
+            if (playerCount == 1)
+            {
+                return LaughCheckSingle();
+            }
+            else
+            {
+                return LaughCheckMulti();
+            }
+        }
+        private static bool LaughCheckSingle()
+        {
+            playersList[0].DidLaugh();
+            if (playersList[0].IsAlive())
+            {
+                return true;
+            }
+            Console.WriteLine("Bra spelat hoppas du hade kul");
+            return false;
+        }
+        private static bool LaughCheckMulti()
         {
             foreach (var p in playersList)
             {
-                p.didLaugh();
+                p.DidLaugh();
             }
-            playersList.RemoveAll(a => !a.IsAive());
-            if (playerNr != 1)
+            playersList.RemoveAll(a => !a.IsAlive());
+            if (playersList.Count == 1)
             {
-                if (playersList.Count == 1)
-                {
-                    return true;
-                }
+                Console.WriteLine($"Vi har en vinnare. Grattis {playersList[0].Name}.");
+                return false;
             }
-            if (playersList.Count == 0)
-            {
-                Console.WriteLine("Bra spelat hoppas du hade kul");
-            }
-            return false;
+            return true;
         }
     }
 }

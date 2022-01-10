@@ -25,12 +25,13 @@ namespace vinterprojektet
             Console.WriteLine("Vilka kortlekar vill du använda? (Svara med siffran)");
             Console.WriteLine("1) Milda");
             Console.WriteLine("2) Milda + Semi Grova");
-            Console.WriteLine("3) Alla");
+            Console.WriteLine("3) Alla (Milda + Semi Grova + Grova)");
             string svar = Console.ReadLine();
 
             switch (svar)
             {
                 case "1":
+                    Console.WriteLine("1");
                     kort.AddRange(mildaKort);
                     break;
                 case "2":
@@ -45,7 +46,7 @@ namespace vinterprojektet
                     int svarint = IntMaker(svar2);
                     foreach (var item in grovaKort)
                     {
-                        if (item.grovLvl <= svarint)
+                        if (item.GrovLvl <= svarint)
                         {
                             kort.Add(item);
                         }
