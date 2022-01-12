@@ -12,6 +12,7 @@ namespace vinterprojektet
             {
                 playing = g.Update();
             }
+            Console.ReadLine();
 
         }
 
