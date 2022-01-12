@@ -19,10 +19,5 @@ namespace vinterprojektet
             k.PlayCard();
             return Player.LaughCheck(playerCount);
         }
-
-
-
-
-
     }
 }
