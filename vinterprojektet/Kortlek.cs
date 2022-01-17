@@ -11,9 +11,11 @@ namespace vinterprojektet
 
         private Queue<Kort> kortsamling = new Queue<Kort>();
         static Random generator = new Random();
-
+        
+        //Skapar och blandar kortleken
         public void SetKortlek()
         {
+            //Läser in de olika korten
             List<Kort> kort = new List<Kort>();
             string mildaString = File.ReadAllText("Milda.json");
             mildaKort = JsonSerializer.Deserialize<List<Kort>>(mildaString);
@@ -21,13 +23,13 @@ namespace vinterprojektet
             grovaKort = JsonSerializer.Deserialize<List<GrovaKort>>(grovaString);
             string semiGrovaString = File.ReadAllText("SemiGrova.json");
             semiGrovaKort = JsonSerializer.Deserialize<List<Kort>>(semiGrovaString);
-
+            //Frågar vilka kort man vill använda
             Console.WriteLine("Vilka kortlekar vill du använda? (Svara med siffran)");
             Console.WriteLine("1) Milda");
             Console.WriteLine("2) Milda + Semi Grova");
             Console.WriteLine("3) Alla (Milda + Semi Grova + Grova)");
             string svar = Console.ReadLine();
-
+            //Lägger till korten som ska vara med i en ny lista 
             switch (svar)
             {
                 case "1":
@@ -59,7 +61,7 @@ namespace vinterprojektet
             }
             RandomizeList(kort);
         }
-
+        //Blandar kortleken
         private void RandomizeList(List<Kort> k)
         {
             while (k.Count != 0)
@@ -69,11 +71,13 @@ namespace vinterprojektet
                 k.Remove(tillagt);
             }
         }
+        //Skriver ut kortet som är först i kön
         public void PlayCard()
         {
             kortsamling.Dequeue().PrintJoke();
         }
-        public int IntMaker(string input)
+        //Gör om String till Int
+        private int IntMaker(string input)
         {
             bool correct;
             int output;

@@ -13,6 +13,7 @@ namespace vinterprojektet
         public string Answer { get; init; }
         string playeranswer;
 
+        //Skriver ut detta korts skämt
         public void PrintJoke()
         {
             Console.WriteLine(Question);
