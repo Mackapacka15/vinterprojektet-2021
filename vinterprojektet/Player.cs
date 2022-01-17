@@ -30,7 +30,7 @@ namespace vinterprojektet
                 lives--;
             }
         }
-        //Kollar om spelare är vid liv
+        //Kollar om spelaren är vid liv
         public bool IsAlive()
         {
             if (lives <= 0)
