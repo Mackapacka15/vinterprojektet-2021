@@ -35,7 +35,7 @@ namespace vinterprojektet
         {
             if (lives <= 0)
             {
-                Console.WriteLine($"{name} har sktattat för mycket och är ute ur spelet");
+                Console.WriteLine($"{name} har skattat för mycket och är ute ur spelet");
                 return false;
             }
             return true;

@@ -24,10 +24,5 @@ namespace vinterprojektet
             //Frågar vem som skrattade och retunerar om spelet ska avslutas
             return Player.LaughCheck(playerCount);
         }
-
-
-
-
-
     }
 }
