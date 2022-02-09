@@ -30,7 +30,7 @@ namespace vinterprojektet
             }
             else
             {
-                Console.WriteLine("Grattis! Du är världens kallaste människa");
+                Console.WriteLine("Grattis! Du är världens kallaste människa. Spelet har slut på skämt.");
                 return cardsLeft;
             }
         }
