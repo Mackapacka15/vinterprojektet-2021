@@ -11,7 +11,7 @@ namespace vinterprojektet
 
         private Queue<Kort> kortsamling = new Queue<Kort>();
         static Random generator = new Random();
-        
+
         //Skapar och blandar kortleken
         public void SetKortlek()
         {
@@ -72,9 +72,17 @@ namespace vinterprojektet
             }
         }
         //Skriver ut kortet som är först i kön
-        public void PlayCard()
+        public bool PlayCard()
         {
-            kortsamling.Dequeue().PrintJoke();
+            if (kortsamling.Count != 0)
+            {
+                kortsamling.Dequeue().PrintJoke();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         //Gör om String till Int
         private int IntMaker(string input)

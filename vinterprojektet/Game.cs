@@ -7,6 +7,7 @@ namespace vinterprojektet
         Menu m = new Menu();
         Kortlek k = new Kortlek();
         int playerCount;
+        bool cardsLeft;
 
         //Körs så fort man skapar ett nytt Game objekt
         public Game()
@@ -19,10 +20,21 @@ namespace vinterprojektet
 
         public bool Update()
         {
-            //Visar nästa kort.
-            k.PlayCard();
+
+            //Visar nästa kort och kollar om det finns kort kvar.
+            cardsLeft = k.PlayCard();
             //Frågar vem som skrattade och retunerar om spelet ska avslutas
-            return Player.LaughCheck(playerCount);
+            if (cardsLeft)
+            {
+                return Player.LaughCheck(playerCount);
+            }
+            else
+            {
+                Console.WriteLine("Grattis! Du är världens kallaste människa");
+                return cardsLeft;
+            }
         }
+
+
     }
 }
